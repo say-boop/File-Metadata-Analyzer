@@ -1,0 +1,20 @@
+[project]
+name = "file-metadata-analyzer-main"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "say-boop",email = "say284821@gmail.com"}
+]
+requires-python = "^3.12"
+dependencies = [
+    "exifread (>=3.5.1,<4.0.0)",
+    "pypdf2 (>=3.0.1,<4.0.0)",
+    "python-docx (>=1.2.0,<2.0.0)",
+    "mutagen (>=1.48.1,<2.0.0)",
+    "pillow (>=12.2.0,<13.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
