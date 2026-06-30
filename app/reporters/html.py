@@ -28,6 +28,21 @@ def generate_html_report(results: list[dict], output_path: str = None) -> str:
 			info = f"<div><strong>Author:</strong> {r.get('author', 'N/A')}</div><div><strong>Paragraphs:</strong> {r.get('paragraphs', 'N/A')}</div>"
 		elif r["type"] == "audio":
 			info = f"<div><strong>Artist:</strong> {r.get('artist', 'N/A')}</div><div><strong>Album:</strong> {r.get('album', 'N/A')}</div><div><strong>Duration:</strong> {r.get('duration', 'N/A')}s</div>"
+		elif r["type"] == "exe":
+			info = f"<div><strong>Version:</strong> {r.get('version', 'N/A')}</div>"
+			info += f"<div><strong>Company:</strong> {r.get('company', 'N/A')}</div>"
+			info += f"<div><strong>Compiled:</strong> {r.get('compile_date', 'N/A')}</div>"
+			info += f"<div><strong>Arch:</strong> {r.get('architecture', 'N/A')}</div>"
+		elif r["type"] == "archive":
+			info = f"<div><strong>Format:</strong> {r.get('format', 'N/A')}</div>"
+			info += f"<div><strong>Files inside:</strong> {r.get('total_files', 'N/A')}</div>"
+			info += f"<div><strong>Uncompressed:</strong> {r.get('total_size_uncompressed', 'N/A')} bytes</div>"
+		elif r["type"] == "video":
+			info = f"<div><strong>Resolution:</strong> {r.get('resolution', 'N/A')}</div>"
+			info += f"<div><strong>Video Codec:</strong> {r.get('video_codec', 'N/A')}</div>"
+			info += f"<div><strong>Audio Codec:</strong> {r.get('audio_codec', 'N/A')}</div>"
+			info += f"<div><strong>Duration:</strong> {r.get('duration', 'N/A')}s</div>"
+			info += f"<div><strong>Bitrate:</strong> {r.get('bitrate', 'N/A')}</div>"
 		else:
 			info = "N/A"
 

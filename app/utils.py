@@ -17,6 +17,16 @@ EXTENSION_MAP = {
 	".flac": "audio",
 	".wav": "audio",
 	".ogg": "audio",
+
+	".exe": "exe",
+	".dll": "exe",
+	".zip": "archive",
+	".rar": "archive",
+	".7z": "archive",
+	".mp4": "video",
+	".mkv": "video",
+	".avi": "video",
+	".mov": "video",
 }
 
 

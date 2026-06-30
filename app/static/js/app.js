@@ -62,6 +62,12 @@ function displayResults(files) {
       details = `Author: ${f.author || "N/A"}, Paragraphs: ${f.paragraphs || "N/A"}`;
     } else if (f.type === "audio") {
       details = `Artist: ${f.artist || "N/A"}, Duration: ${f.duration || "N/A"}s`;
+    } else if (f.type === "exe") {
+			details = `Version: ${f.version || "N/A"}, Company: ${f.company || "N/A"}`;
+    } else if (f.type === "archive") {
+			details = `Files: ${f.total_files || "N/A"}, Format: ${f.format || "N/A"}`;
+    } else if (f.type === "video") {
+			details = `Resolution: ${f.resolution || "N/A"}, Codec: ${f.video_codec || "N/A"}, Duration: ${f.duration || "N/A"}s`;
     }
         
     html += `<tr>

@@ -173,6 +173,21 @@ tr:last-child td {
 	color: #94a3b8;
 }
 
+.badge-exe {
+	background: rgba(168, 85, 247, 0.15);
+	color: #a855f7;
+}
+
+.badge-archive {
+	background: rgba(236, 72, 153, 0.15);
+	color: #ec4899;
+}
+
+.badge-video {
+	background: rgba(20, 184, 166, 0.15);
+	color: #14b8a6;
+}
+
 .spinner {
 	display: none;
 	width: 18px;
