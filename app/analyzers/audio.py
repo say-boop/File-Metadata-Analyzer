@@ -21,6 +21,9 @@ def analyze_audio(file_path: str) -> dict:
 		"genre": "N/A",
 		"year": "N/A",
 		"has_cover": False,
+		"channels": "N/A",
+		"lyrics": "N/A",
+		"cover_extracted": False,
 	}
 
 	try:
@@ -42,6 +45,21 @@ def analyze_audio(file_path: str) -> dict:
 			result["genre"] = str(tags.get("TCON", "N/A")) if "TCON" in tags else str(tags.get("GENRE", "N/A"))
 			result["year"] = str(tags.get("TDRC", "N/A")) if "TDRC" in tags else str(tags.get("DATE", "N/A"))
 			result["has_cover"] = "APIC:" in str(tags) or "METADATA_BLOCK_PICTURE" in str(tags)
+			
+			if hasattr(audio.info, "channels"):
+				result["channels"] = audio.info.channels
+
+			if hasattr(audio.tags, "getall"):
+				for key in audio.tags.keys():
+					if key.startswith("USLT") or key.startswith("©lyr"):
+						result["lyrics"] = str(audio.tags[key])[:200]
+						break
+
+			if hasattr(audio.tags, "getall"):
+				for key in audio.tags.keys():
+					if key.startswith("APIC:") or key == "METADATA_BLOCK_PICTURE":
+						result["cover_extracted"] = True
+						break
 		
 	except Exception:
 		return base_result

@@ -35,3 +35,14 @@ def test_analyze_audio_basic(tmp_path):
 	assert "album" in result
 	assert "title" in result
 	assert "format" in result
+
+
+def test_analyze_audio_fields(tmp_path):
+	audio_path = tmp_path / "test.mp3"
+	create_test_mp3(str(audio_path))
+
+	result = analyze_audio(str(audio_path))
+
+	assert "channels" in result
+	assert "lyrics" in result
+	assert "cover_extracted" in result

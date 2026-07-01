@@ -8,7 +8,20 @@ def analyze_image(file_path: str) -> dict:
 	result = {
 		"file_name": file_path_obj.name,
 		"file_size": file_path_obj.stat().st_size,
-		"type": "image"
+		"type": "image",
+		"camera": "N/A",
+		"date_taken": "N/A",
+		"flash": "N/A",
+		"iso": "N/A",
+		"exposure": "N/A",
+		"orientation": "N/A",
+		"white_balance": "N/A",
+		"exposure_mode": "N/A",
+		"metering_mode": "N/A",
+		"serial_number": "N/A",
+		"lens": "N/A",
+		"software": "N/A",
+		"copyright": "N/A",
 	}
 
 	try:
@@ -61,5 +74,29 @@ def analyze_image(file_path: str) -> dict:
 			"latitude": round(lat, 6),
 			"longitude": round(lon, 6),
 		}
+
+	if "Image Orientation" in tags:
+		result["orientation"] = str(tags["Image Orientation"])
+
+	if "EXIF WhiteBalance" in tags:
+		result["white_balance"] = str(tags["EXIF WhiteBalance"])
+
+	if "EXIF ExposureMode" in tags:
+		result["exposure_mode"] = str(tags["EXIF ExposureMode"])
+
+	if "EXIF MeteringMode" in tags:
+		result["metering_mode"] = str(tags["EXIF MeteringMode"])
+
+	if "EXIF BodySerialNumber" in tags:
+		result["serial_number"] = str(tags["EXIF BodySerialNumber"])
+
+	if "EXIF LensModel" in tags:
+		result["lens"] = str(tags["EXIF LensModel"])
+
+	if "Image Software" in tags:
+		result["software"] = str(tags["Image Software"])
+
+	if "Image Copyright" in tags:
+		result["copyright"] = str(tags["Image Copyright"])
 
 	return result

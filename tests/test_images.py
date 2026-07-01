@@ -65,3 +65,21 @@ def test_analyze_image_corrupted(tmp_path):
 
 	assert result["file_name"] == "corrupted.jpg"
 	assert result["type"] == "image"
+
+
+def test_analyze_image_fields(tmp_path):
+	img = Image.new("RGB", (100,200))
+	img_path = tmp_path / "test_fields.jpg"
+	img.save(img_path)
+
+	result = analyze_image(img_path)
+
+	expected_fields = [
+    "file_name", "file_size", "type", "resolution", "format",
+    "camera", "date_taken", "flash", "iso", "exposure",
+    "orientation", "white_balance", "exposure_mode", "metering_mode",
+    "serial_number", "lens", "software", "copyright"
+  ]
+
+	for field in expected_fields:
+		assert field in result, f"Missing field: {field}"
