@@ -10,6 +10,7 @@ def analyze_exe(file_path: str) -> dict:
 		"file_name": path_obj.name,
 		"file_size": path_obj.stat().st_size,
 		"type": "exe" if path_obj.suffix.lower() == ".exe" else "dll",
+		"path": path_obj,
 		"company": "N/A",
 		"description": "N/A",
 		"version": "N/A",

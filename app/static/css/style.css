@@ -198,6 +198,44 @@ tr:last-child td {
 	animation: spin 0.8s linear infinite;
 }
 
+.detail-row td {
+	padding: 0 !important;
+	background: #151f32;
+	border-bottom: 2px solid var(--accent);
+}
+
+.detail-panel {
+	padding: 20px 24px;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 8px 24px;
+}
+
+.detail-panel h3 {
+	grid-column: 1 / -1;
+	margin: 0 0 8px 0;
+	color: var(--accent);
+}
+
+.detail-panel p {
+	margin: 4px 0;
+	font-size: 13px;
+	color: var(--text-muted);
+}
+
+.detail-panel p strong {
+	color: var(--text-main);
+}
+
+.file-row {
+	cursor: pointer;
+	transition: background-color 0.15s;
+}
+
+.file-row:hover {
+	background-color: rgba(59, 130, 246, 0.05);
+}
+
 @keyframes spin {
 
 	from {

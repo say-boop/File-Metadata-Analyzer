@@ -8,6 +8,7 @@ def analyze_video(file_path: str) -> dict:
 	result = {
 		"file_name": path_obj.name,
 		"file_size": path_obj.stat().st_size,
+		"path": path_obj,
 		"type": "video",
 		"format": "N/A",
 		"duration": "N/A",

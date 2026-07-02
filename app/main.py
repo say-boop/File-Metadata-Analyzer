@@ -1,7 +1,8 @@
-from fastapi import FastAPI, Request, UploadFile, File
-from fastapi.responses import Response, HTMLResponse
+from fastapi import FastAPI, Request, HTTPException, status
+from fastapi.responses import Response, HTMLResponse, FileResponse
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
+import os
 
 from app.scanner import scan_directory
 from app.analyzers.images import analyze_image
@@ -71,6 +72,25 @@ def scan_file(req: ScanRequest):
 		"total": len(results),
 		"files": results
 	}
+
+
+@app.get("/preview")
+def preview(path: str):
+	clean_path = path.strip() if path else ""
+
+	if not clean_path:
+		raise HTTPException(
+			status_code=status.HTTP_400_BAD_REQUEST,
+			detail="The file path is not specified"
+		)
+
+	if not os.path.exists(clean_path) or not os.path.isfile(clean_path):
+		raise HTTPException(
+			status_code=status.HTTP_404_NOT_FOUND,
+			detail=f"The file with the path '{clean_path}' was not found."
+		)
+
+	return FileResponse(clean_path)
 
 
 @app.get("/report/json")

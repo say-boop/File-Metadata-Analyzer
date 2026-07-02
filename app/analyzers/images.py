@@ -8,6 +8,7 @@ def analyze_image(file_path: str) -> dict:
 	result = {
 		"file_name": file_path_obj.name,
 		"file_size": file_path_obj.stat().st_size,
+		"path": file_path_obj,
 		"type": "image",
 		"camera": "N/A",
 		"date_taken": "N/A",

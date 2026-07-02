@@ -9,6 +9,7 @@ def analyze_archive(file_path: str) -> dict:
 	result = {
 		"file_name": path_obj.name,
 		"file_size": path_obj.stat().st_size,
+		"path": path_obj,
 		"type": "archive",
 		"format": "ZIP" if path_obj.suffix.lower() == ".zip" else "RAR",
 		"total_files": "N/A",

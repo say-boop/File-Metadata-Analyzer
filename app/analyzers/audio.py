@@ -10,6 +10,7 @@ def analyze_audio(file_path: str) -> dict:
 	base_result = {
 		"file_name": path_obj.name,
 		"file_size": path_obj.stat().st_size,
+		"path": path_obj,
 		"type": "audio",
 		"format": "Unknown",
 		"duration": "N/A",
